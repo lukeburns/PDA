@@ -26,6 +26,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         console.log('URL ' + changeInfo.url + ' added to visitedUrls.');
       });
     });
+  }
 });
 console.log('Background script for My Extension');
 
