@@ -1,5 +1,5 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  console.log('Tab update event triggered. changeInfo: ', changeInfo);
+  // console.log('Tab update event triggered. changeInfo: ', changeInfo);
   if (changeInfo.status === 'complete') {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       var tab = tabs[0]; // there will be only one in this array
