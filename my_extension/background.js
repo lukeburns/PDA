@@ -6,7 +6,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
       console.log('Tab URL: ', tab.url);
       chrome.storage.sync.get(['visitedUrls'], function(result) {
         var visitedUrls = result.visitedUrls ? result.visitedUrls : [];
-        console.log('Current visitedUrls: ', visitedUrls);
+        console.log('Current visitedUrls: ', visitedUrls.filter(url => url !== null));
 
         // Create a Blob from the visitedUrls array
         var blob = new Blob([visitedUrls.join('\n')], {type: 'text/plain'});
