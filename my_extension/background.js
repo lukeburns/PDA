@@ -1,10 +1,9 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   console.log('Tab update event triggered. changeInfo: ', changeInfo);
   if (changeInfo.status === 'complete') {
-    chrome.tabs.get(tabId, function(tab) {
-      if (tab.url !== undefined) {
-        console.log('Tab URL: ', tab.url);
-      }
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      var tab = tabs[0]; // there will be only one in this array
+      console.log('Tab URL: ', tab.url);
     });
   }
   if (changeInfo.url !== undefined) {
