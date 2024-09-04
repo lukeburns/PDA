@@ -1,6 +1,7 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+  console.log('Tab update event triggered. changeInfo: ', changeInfo);
   if (changeInfo.url !== undefined) {
-    console.log('Tab updated: ', changeInfo.url);
+    console.log('URL changed. New URL: ', changeInfo.url);
     chrome.storage.sync.get(['visitedUrls'], function(result) {
       var visitedUrls = result.visitedUrls ? result.visitedUrls : [];
       visitedUrls.push(changeInfo.url);
