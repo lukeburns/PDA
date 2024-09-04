@@ -27,6 +27,6 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         chrome.downloads.download({url: url, filename: 'visitedUrls.txt'});
       });
     });
-  }
 });
 console.log('Background script for My Extension');
+  }
