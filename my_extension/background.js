@@ -1,10 +1,9 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   console.log('Tab update event triggered. changeInfo: ', changeInfo);
-  if (changeInfo.status === 'complete' && tab.url) {
-    console.log('Tab URL: ', tab.url);
-  }
-  if (tab.status === 'complete' && tab.url) {
-    console.log('Tab URL when status is complete: ', tab.url);
+  if (changeInfo.status === 'complete') {
+    chrome.tabs.get(tabId, function(tab) {
+      console.log('Tab URL: ', tab.url);
+    });
   }
   if (changeInfo.url !== undefined) {
     console.log('URL changed. New URL: ', changeInfo.url);
