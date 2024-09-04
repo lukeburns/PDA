@@ -11,4 +11,6 @@ You should now see your extension in the list, and a new icon in your menu bar. 
 
 Loading a tab in the browser should output on the console.
 
-![alt text](image.png)
+![alt text](image-1.png)
+
+The URLs should be automatically downloaded to `visitedUrls.txt` in the Downloads folder.
