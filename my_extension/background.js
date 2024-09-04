@@ -29,4 +29,4 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     });
 });
 console.log('Background script for My Extension');
-  }
+
