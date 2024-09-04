@@ -3,7 +3,7 @@
   "name": "My Extension",
   "version": "1.0",
   "description": "My first Chrome extension.",
-  "permissions": ["activeTab", "storage", "tabs"],
+  "permissions": ["activeTab", "storage", "tabs", "downloads"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false

@@ -14,6 +14,13 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
       chrome.storage.sync.set({visitedUrls: visitedUrls}, function() {
         console.log('URL ' + changeInfo.url + ' added to visitedUrls.');
         console.log('Current visitedUrls: ', visitedUrls);
+
+        // Create a Blob from the visitedUrls array
+        var blob = new Blob([visitedUrls.join('\n')], {type: 'text/plain'});
+        // Create a URL from the Blob
+        var url = URL.createObjectURL(blob);
+        // Download the URL as a .txt file
+        chrome.downloads.download({url: url, filename: 'visitedUrls.txt'});
       });
     });
   }
