@@ -9,9 +9,6 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   }
   if (changeInfo.url !== undefined) {
     console.log('URL changed. New URL: ', changeInfo.url);
-  } else {
-    console.log('changeInfo.url is undefined');
-  }
     chrome.storage.sync.get(['visitedUrls'], function(result) {
       var visitedUrls = result.visitedUrls ? result.visitedUrls : [];
       visitedUrls.push(changeInfo.url);
@@ -27,6 +24,9 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         chrome.downloads.download({url: url, filename: 'visitedUrls.txt'});
       });
     });
+  } else {
+    console.log('changeInfo.url is undefined');
+  }
 });
 console.log('Background script for My Extension');
 
