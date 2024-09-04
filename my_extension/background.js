@@ -3,6 +3,9 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   if (changeInfo.status === 'complete' && tab.url !== undefined) {
     console.log('Tab URL: ', tab.url);
   }
+  if (tab.status === 'complete') {
+    console.log('Tab URL when status is complete: ', tab.url);
+  }
   if (changeInfo.url !== undefined) {
     console.log('URL changed. New URL: ', changeInfo.url);
     chrome.storage.sync.get(['visitedUrls'], function(result) {
