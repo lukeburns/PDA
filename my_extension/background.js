@@ -1,5 +1,6 @@
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   console.log('Tab update event triggered. changeInfo: ', changeInfo);
+  console.log('changeInfo.url: ', changeInfo.url);
   if (changeInfo.status === 'complete') {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       var tab = tabs[0]; // there will be only one in this array
@@ -8,6 +9,9 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   }
   if (changeInfo.url !== undefined) {
     console.log('URL changed. New URL: ', changeInfo.url);
+  } else {
+    console.log('changeInfo.url is undefined');
+  }
     chrome.storage.sync.get(['visitedUrls'], function(result) {
       var visitedUrls = result.visitedUrls ? result.visitedUrls : [];
       visitedUrls.push(changeInfo.url);
