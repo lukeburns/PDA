@@ -9,6 +9,6 @@
 
 You should now see your extension in the list, and a new icon in your menu bar. You can view the console by clicking "background page" under your extension in chrome://extensions.
 
-Loading a tab in the browser should output sth on the console.
+Loading a tab in the browser should output on the console.
 
 ![alt text](image.png)
