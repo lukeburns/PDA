@@ -5,6 +5,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
       visitedUrls.push(changeInfo.url);
       chrome.storage.sync.set({visitedUrls: visitedUrls}, function() {
         console.log('URL ' + changeInfo.url + ' added to visitedUrls.');
+        console.log('Current visitedUrls: ', visitedUrls);
       });
     });
   }
