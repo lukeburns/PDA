@@ -3,7 +3,7 @@ const cors = require('cors');
 const fs = require('fs');
 const app = express();
 app.use(cors({
-  origin: 'chrome-extension://hidffbikffohmhaknmmcldfeojmoobdn',
+  origin: 'chrome-extension://nngpnjnabbdophdgmbpdikdfognblmcf',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
@@ -27,6 +27,18 @@ app.use(express.json());
 app.post('/visitedUrls', (req, res) => {
   console.log('Received visited URLs: ', req.body.visitedUrls);
   fs.writeFile('visitedUrls.txt', req.body.visitedUrls.join('\n'), err => {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+// append event to history.txt
+app.post('/event', (req, res) => {
+  fs.appendFile('history.txt', JSON.stringify(req.body)+"\n\n", err => {
     if (err) {
       console.error(err);
       res.sendStatus(500);
