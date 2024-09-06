@@ -19,7 +19,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
       });
     });
   }
-  if (changeInfo.url !== undefined && !changeInfo.url.startsWith('chrome://') && !changeInfo.url.startsWith('chrome-extension://') && !changeInfo.url.startsWith('chrome://extensions/') && !changeInfo.url.startsWith('chrome://settings/') && !changeInfo.url.startsWith('chrome://newtab/')) {
+  if (changeInfo.url !== undefined && !changeInfo.url.startsWith('chrome')) {
     console.log('URL changed. New URL: ', changeInfo.url);
     chrome.storage.sync.get(['visitedUrls'], function(result) {
       var visitedUrls = result.visitedUrls ? result.visitedUrls : [];
