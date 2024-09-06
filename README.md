@@ -3,17 +3,24 @@
 WARNING: Proof of concept only, not meant to actually do anything useful at this stage.
 
 Idea: Log internet usage locally to allow for data analysis and "attention mining".
-## Installation
+
+## Running the server
+
+```
+cd server
+npm install
+npm start
+```
+
+## Installation of the extension
 
 1. Open Chrome and navigate to chrome://extensions.
 2. Enable Developer mode by ticking the checkbox in the upper-right corner.
 3. Click on the "Load unpacked extension..." button.
 4. Select your extension's directory `my_extension`
 
-You should now see your extension in the list, and a new icon in your menu bar. You can view the console by clicking "background page" under your extension in chrome://extensions.
+You should now see your extension in the list, and a new icon in your menu bar. You can view the console by clicking on the link "Inspect views" under your extension in chrome://extensions.
 
-Loading a tab in the browser should output on the console.
+## Usage
 
-![alt text](image-1.png)
-
-The URLs should be automatically downloaded to `visitedUrls.txt` in the Downloads folder.
+The URLs visited in the browser should now be automatically sent to the server which puts them in the file `server/visitedUrls.txt`.
