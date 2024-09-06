@@ -12,6 +12,11 @@ app.options('*', cors());
 // Log the headers of each incoming request
 app.use((req, res, next) => {
   console.log('Headers:', req.headers);
+  console.log('CORS-related headers:', {
+    origin: req.headers.origin,
+    'access-control-request-method': req.headers['access-control-request-method'],
+    'access-control-request-headers': req.headers['access-control-request-headers']
+  });
   next();
 });
 
