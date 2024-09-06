@@ -8,8 +8,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         var visitedUrls = result.visitedUrls ? result.visitedUrls : [];
         console.log('Current visitedUrls: ', visitedUrls.filter(url => url !== null));
 
-        // Send the visitedUrls to a server
-        fetch('http://your-server-url.com', {
+        // Send the visitedUrls to our server
+        fetch('http://localhost:3000/visitedUrls', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
