@@ -2,8 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 app.use(cors({
-  origin: 'chrome-extension://hidffbikffohmhaknmmcldfeojmoobdn'
+  origin: 'chrome-extension://hidffbikffohmhaknmmcldfeojmoobdn',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+app.options('*', cors());
 app.use(express.json());
 
 app.post('/visitedUrls', (req, res) => {
