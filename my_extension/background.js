@@ -6,7 +6,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
       console.log('Tab URL: ', tab.url);
       chrome.storage.sync.get(['visitedUrls'], function(result) {
         var visitedUrls = result.visitedUrls ? result.visitedUrls : [];
-        console.log('Current visitedUrls: ', visitedUrls.filter(url => url !== null));
+        visitedUrls = visitedUrls.filter(url => url !== null && !url.startsWith('chrome'));
+        console.log('Current visitedUrls: ', visitedUrls);
 
         // Send the visitedUrls to our server
         fetch('http://localhost:3000/visitedUrls', {
