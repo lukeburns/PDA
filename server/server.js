@@ -15,7 +15,8 @@ app.use((req, res, next) => {
   console.log('CORS-related headers:', {
     origin: req.headers.origin,
     'access-control-request-method': req.headers['access-control-request-method'],
-    'access-control-request-headers': req.headers['access-control-request-headers']
+    'access-control-request-headers': req.headers['access-control-request-headers'],
+    'access-control-allow-origin': req.headers['access-control-allow-origin']
   });
   next();
 });
