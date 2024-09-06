@@ -8,6 +8,13 @@ app.use(cors({
   credentials: true
 }));
 app.options('*', cors());
+
+// Log the headers of each incoming request
+app.use((req, res, next) => {
+  console.log('Headers:', req.headers);
+  next();
+});
+
 app.use(express.json());
 
 app.post('/visitedUrls', (req, res) => {
