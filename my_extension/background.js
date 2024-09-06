@@ -8,12 +8,14 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         var visitedUrls = result.visitedUrls ? result.visitedUrls : [];
         console.log('Current visitedUrls: ', visitedUrls.filter(url => url !== null));
 
-        // Create a Blob from the visitedUrls array
-        var blob = new Blob([visitedUrls.join('\n')], {type: 'text/plain'});
-        // Create a URL from the Blob
-        var url = URL.createObjectURL(blob);
-        // Download the URL as a .txt file
-        chrome.downloads.download({url: url, filename: 'visitedUrls.txt'});
+        // Send the visitedUrls to a server
+        fetch('http://your-server-url.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({visitedUrls: visitedUrls})
+        });
       });
     });
   }
