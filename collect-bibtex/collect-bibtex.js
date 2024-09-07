@@ -44,7 +44,8 @@ if (urls === null) {
       const bibtexUrl = url.replace('/pdf/', '/bibtex/');
       return axios.get(bibtexUrl).then(response => processBibtexEntry(response.data));
     })).then(bibtexEntries => {
-      fs.writeFileSync(outputPath, bibtexEntries.join('\n\n'));
+      const uniqueBibtexEntries = Array.from(new Set(bibtexEntries));
+      fs.writeFileSync(outputPath, uniqueBibtexEntries.join('\n\n'));
     }).catch(error => {
       console.error(error);
     });
