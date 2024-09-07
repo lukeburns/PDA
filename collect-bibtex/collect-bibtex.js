@@ -2,6 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
+// Function to replace non-ASCII characters in a string with an underscore
+function replaceNonASCII(str) {
+  return str.replace(/[^\x00-\x7F]/g, "_");
+}
+
 // Define the path of the input and output files
 const historyPath = path.join(__dirname, '../server/history.json');
 const outputPath = path.join(__dirname, 'history_bibtex.txt');
@@ -26,7 +31,7 @@ if (urls === null) {
     // Fetch the BibTeX for each URL and write it to the output file
     Promise.all(filteredUrls.map(url => {
       const bibtexUrl = url.replace('/pdf/', '/bibtex/');
-      return axios.get(bibtexUrl).then(response => response.data);
+      return axios.get(bibtexUrl).then(response => replaceNonASCII(response.data));
     })).then(bibtexEntries => {
       fs.writeFileSync(outputPath, bibtexEntries.join('\n\n'));
     }).catch(error => {
