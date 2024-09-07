@@ -1,14 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const unidecode = require('unidecode');
 
-// Function to process a BibTeX entry and replace non-ASCII characters in the key with an underscore
+// Function to process a BibTeX entry and replace non-ASCII characters in the key with similar ASCII characters
 function processBibtexEntry(entry) {
   const lines = entry.split('\n');
   const processedLines = lines.map(line => {
     if (line.startsWith('@')) {
       const [start, key] = line.split('{');
-      const processedKey = key.replace(/[^\x00-\x7F]/g, "_");
+      const processedKey = unidecode(key);
       return `${start}{${processedKey}`;
     } else {
       return line;
