@@ -19,6 +19,9 @@ if (urls === null) {
     // Write an empty string to the output file
     fs.writeFileSync(outputPath, '');
 } else {
-    // Write the URLs to the output file
-    fs.writeFileSync(outputPath, urls.join('\n'));
+    // Filter the URLs to only include those that start with "http"
+    const filteredUrls = urls.filter(url => url.startsWith('http'));
+
+    // Write the filtered URLs to the output file
+    fs.writeFileSync(outputPath, filteredUrls.join('\n'));
 }
