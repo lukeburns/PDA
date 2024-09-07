@@ -38,22 +38,16 @@ app.post('/visitedUrls', (req, res) => {
   });
 });
 
-// append event to history.json
 app.post('/event', (req, res) => {
   console.log('Data:', req.body);
-  const historyData = JSON.stringify(req.body, null, 2) + ",\n";
-  fs.exists('history.json', exists => {
-    if (exists) {
-      fs.appendFile('history.json', historyData, err => {
-        if (err) {
-          console.error(err);
-          res.sendStatus(500);
-        } else {
-          res.sendStatus(200);
-        }
-      });
+  fs.readFile('history.json', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
     } else {
-      fs.writeFile('history.json', historyData, err => {
+      const history = JSON.parse(data);
+      history.push(req.body);
+      fs.writeFile('history.json', JSON.stringify(history, null, 2), err => {
         if (err) {
           console.error(err);
           res.sendStatus(500);
