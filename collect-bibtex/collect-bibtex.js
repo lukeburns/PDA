@@ -12,7 +12,7 @@ const history = JSON.parse(fs.readFileSync(historyPath, 'utf-8'));
 const urlRegex = /(http|https):\/\/[^\s$.?#].[^\s]*\.pdf(?=")/g;
 
 // Extract the URLs from each event in the history
-const urls = history.flatMap(event => (JSON.stringify(event).match(urlRegex) || []));
+const urls = history.flatMap(event => event.url ? [event.url] : []);
 
 // Check if urls is null
 if (urls === null) {
