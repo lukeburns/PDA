@@ -1,0 +1,30 @@
+{
+  "event": "tabUpdated",
+  "id": 2107283977,
+  "url": "https://arxiv.org/search/cs?searchtype=author&query=Bilkova,+M",
+  "title": "Search | arXiv e-print repository",
+  "windowId": 2107283925,
+  "groupId": -1,
+  "lastAccessed": 1725748787765.421,
+  "timestamp": 1725748816198
+},
+{
+  "event": "tabUpdated",
+  "id": 2107283977,
+  "url": "https://arxiv.org/pdf/2406.16785",
+  "title": "arxiv.org/pdf/2406.16785",
+  "windowId": 2107283925,
+  "groupId": -1,
+  "lastAccessed": 1725748787765.421,
+  "timestamp": 1725748818682
+},
+{
+  "event": "windowFocusChanged",
+  "id": 2107283977,
+  "url": "https://arxiv.org/pdf/2406.16785",
+  "title": "arxiv.org/pdf/2406.16785",
+  "windowId": 2107283925,
+  "groupId": -1,
+  "lastAccessed": 1725748787765.421,
+  "timestamp": 1725748925306
+},
