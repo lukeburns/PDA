@@ -14,5 +14,11 @@ const urlRegex = /(http|https):\/\/[^\s$.?#].[^\s]*\.pdf/g;
 // Extract the URLs
 const urls = history.match(urlRegex);
 
-// Write the URLs to the output file
-fs.writeFileSync(outputPath, urls.join('\n'));
+// Check if urls is null
+if (urls === null) {
+    // Write an empty string to the output file
+    fs.writeFileSync(outputPath, '');
+} else {
+    // Write the URLs to the output file
+    fs.writeFileSync(outputPath, urls.join('\n'));
+}
