@@ -5,14 +5,14 @@ const path = require('path');
 const historyPath = path.join(__dirname, '../server/history.json');
 const outputPath = path.join(__dirname, 'history_pdf.txt');
 
-// Read the history file
-const history = fs.readFileSync(historyPath, 'utf-8');
+// Read and parse the history file
+const history = JSON.parse(fs.readFileSync(historyPath, 'utf-8'));
 
 // Use a regular expression to match URLs
 const urlRegex = /(http|https):\/\/[^\s$.?#].[^\s]*\.pdf(?=")/g;
 
-// Extract the URLs
-const urls = history.match(urlRegex);
+// Extract the URLs from each event in the history
+const urls = history.flatMap(event => (JSON.stringify(event).match(urlRegex) || []));
 
 // Check if urls is null
 if (urls === null) {
