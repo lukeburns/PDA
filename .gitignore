@@ -1,4 +1,4 @@
 .aider*
 .DS_Store
 node_modules
-.txt
+*.txt
