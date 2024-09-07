@@ -41,21 +41,28 @@ app.post('/visitedUrls', (req, res) => {
 app.post('/event', (req, res) => {
   console.log('Data:', req.body);
   fs.readFile('history.json', (err, data) => {
+    let history;
     if (err) {
-      console.error(err);
-      res.sendStatus(500);
+      if (err.code === 'ENOENT') {
+        // File does not exist, initialize history as an empty array
+        history = [];
+      } else {
+        console.error(err);
+        res.sendStatus(500);
+        return;
+      }
     } else {
-      const history = JSON.parse(data);
-      history.push(req.body);
-      fs.writeFile('history.json', JSON.stringify(history, null, 2), err => {
-        if (err) {
-          console.error(err);
-          res.sendStatus(500);
-        } else {
-          res.sendStatus(200);
-        }
-      });
+      history = JSON.parse(data);
     }
+    history.push(req.body);
+    fs.writeFile('history.json', JSON.stringify(history, null, 2), err => {
+      if (err) {
+        console.error(err);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    });
   });
 });
 
