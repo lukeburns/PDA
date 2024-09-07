@@ -23,6 +23,16 @@ npm install
 npm start
 ```
 
+## Collecting Bibtex Entries
+
+If you have urls linking to pdf files on Arxiv, then you can save them in a file `collect-bibtex/history.bib` as follows.
+
+```
+cd collect-bibtex
+npm install
+node collect-bibtex.js
+```
+
 
 ## Usage
 
