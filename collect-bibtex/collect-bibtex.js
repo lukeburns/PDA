@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Define the path of the input and output files
-const historyPath = path.join(__dirname, '../server/history.txt');
+const historyPath = path.join(__dirname, '../server/history.json');
 const outputPath = path.join(__dirname, 'history_pdf.txt');
 
 // Read the history file
