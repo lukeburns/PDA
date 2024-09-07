@@ -9,7 +9,7 @@ const outputPath = path.join(__dirname, 'history_pdf.txt');
 const history = fs.readFileSync(historyPath, 'utf-8');
 
 // Use a regular expression to match URLs
-const urlRegex = /(http|https):\/\/[^\s$.?#].[^\s]*\.pdf/g;
+const urlRegex = /(http|https):\/\/[^\s$.?#].[^\s]*\.pdf(?=")/g;
 
 // Extract the URLs
 const urls = history.match(urlRegex);
