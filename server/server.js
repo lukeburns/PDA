@@ -37,14 +37,28 @@ app.post('/visitedUrls', (req, res) => {
   });
 });
 
-// append event to history.txt
+// append event to history.json
 app.post('/event', (req, res) => {
-  fs.appendFile('history.json', JSON.stringify(req.body, null, 2)+",\n", err => {
-    if (err) {
-      console.error(err);
-      res.sendStatus(500);
+  const historyData = JSON.stringify(req.body, null, 2) + ",\n";
+  fs.exists('history.json', exists => {
+    if (exists) {
+      fs.appendFile('history.json', historyData, err => {
+        if (err) {
+          console.error(err);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(200);
+        }
+      });
     } else {
-      res.sendStatus(200);
+      fs.writeFile('history.json', historyData, err => {
+        if (err) {
+          console.error(err);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(200);
+        }
+      });
     }
   });
 });
