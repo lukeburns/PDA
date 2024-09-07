@@ -1,9 +1,10 @@
+const extension_ID=hidffbikffohmhaknmmcldfeojmoobdn
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const app = express();
 app.use(cors({
-  origin: 'chrome-extension://nngpnjnabbdophdgmbpdikdfognblmcf',
+  origin: 'chrome-extension://extension_ID',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
