@@ -27,6 +27,7 @@ app.use(express.json());
 
 app.post('/visitedUrls', (req, res) => {
   console.log('Received visited URLs: ', req.body.visitedUrls);
+  console.log('Data:', req.body);
   fs.writeFile('visitedUrls.json', JSON.stringify(req.body.visitedUrls), err => {
     if (err) {
       console.error(err);
@@ -39,6 +40,7 @@ app.post('/visitedUrls', (req, res) => {
 
 // append event to history.json
 app.post('/event', (req, res) => {
+  console.log('Data:', req.body);
   const historyData = JSON.stringify(req.body, null, 2) + ",\n";
   fs.exists('history.json', exists => {
     if (exists) {
