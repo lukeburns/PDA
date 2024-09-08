@@ -49,7 +49,8 @@ if (urls === null) {
           return '';
         });
     })).then(bibtexEntries => {
-      const uniqueBibtexEntries = Array.from(new Set(bibtexEntries));
+      const validBibtexEntries = bibtexEntries.filter(entry => entry.startsWith('@'));
+      const uniqueBibtexEntries = Array.from(new Set(validBibtexEntries));
       fs.writeFileSync(outputPath, uniqueBibtexEntries.join('\n\n'));
     }).catch(error => {
       console.error(error);
