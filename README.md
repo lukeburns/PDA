@@ -23,9 +23,11 @@ npm install
 npm start
 ```
 
+The server logs the activity of the browser in `intermodule-data/history.json`.
+
 ## Collecting Bibtex Entries
 
-If you have urls linking to pdf files on Arxiv, then you can save them in a file `collect-bibtex/history.bib` as follows.
+If you have urls linking to pdf files on Arxiv, then you can save them in a file `intermodule-data/history.bib` as follows.
 
 ```
 cd collect-bibtex
@@ -33,7 +35,7 @@ npm install
 node collect-bibtex.js
 ```
 
+## Organizing Metadata
 
-## Usage
+Collect metadata and store it in a file `intermodule-data/metadata.json`.
 
-The URLs visited in the browser should now be automatically sent to the server which puts them in the file `server/visitedUrls.txt`.
