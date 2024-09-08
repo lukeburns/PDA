@@ -43,21 +43,22 @@ app.post('/event', (req, res) => {
   fs.readFile('intermodule-data/history.json', (err, data) => {
     if (err) {
       if (err.code === 'ENOENT') {
-        fs.writeFile('intermodule-data/history.json', '[]', (err) => {
-          if (err) {
-            console.error(err);
-            res.sendStatus(500);
-            return;
-          }
-          data = '[]';
-        });
+        fs.writeFileSync('intermodule-data/history.json', '[]');
+        data = '[]';
       } else {
         console.error(err);
         res.sendStatus(500);
         return;
       }
     }
-    let history = JSON.parse(data);
+    let history;
+    try {
+      history = JSON.parse(data);
+    } catch (e) {
+      console.error(e);
+      res.sendStatus(500);
+      return;
+    }
     history.push(req.body);
     fs.writeFile('intermodule-data/history.json', JSON.stringify(history, null, 2), err => {
       if (err) {
