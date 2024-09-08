@@ -40,7 +40,11 @@ app.post('/visitedUrls', (req, res) => {
 
 app.post('/event', (req, res) => {
   console.log('Data:', req.body);
-  fs.readFile('intermodule-data/history.json', (err, data) => {
+  const dir = 'intermodule-data';
+  if (!fs.existsSync(dir)){
+      fs.mkdirSync(dir);
+  }
+  fs.readFile(`${dir}/history.json`, (err, data) => {
     if (err) {
       if (err.code === 'ENOENT') {
         fs.writeFileSync('intermodule-data/history.json', '[]');
