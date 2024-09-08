@@ -4,6 +4,8 @@ WARNING: Proof of concept only, not meant to actually do anything useful at this
 
 Idea: Log internet usage locally to allow for data analysis and "attention mining".
 
+Current Data Flow: `history.json` -> `history.bib` -> `metadata.json`
+
 ## Installation of the extension
 
 1. Open Chrome and navigate to chrome://extensions.
