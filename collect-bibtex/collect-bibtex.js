@@ -42,7 +42,12 @@ if (urls === null) {
     // Fetch the BibTeX for each URL and write it to the output file
     Promise.all(filteredUrls.map(url => {
       const bibtexUrl = url.replace('/pdf/', '/bibtex/');
-      return axios.get(bibtexUrl).then(response => processBibtexEntry(response.data));
+      return axios.get(bibtexUrl)
+        .then(response => processBibtexEntry(response.data))
+        .catch(error => {
+          console.error(`Failed to fetch BibTeX from ${bibtexUrl}:`, error.message);
+          return '';
+        });
     })).then(bibtexEntries => {
       const uniqueBibtexEntries = Array.from(new Set(bibtexEntries));
       fs.writeFileSync(outputPath, uniqueBibtexEntries.join('\n\n'));
