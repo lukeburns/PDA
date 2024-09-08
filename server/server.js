@@ -40,33 +40,32 @@ app.post('/visitedUrls', (req, res) => {
 
 app.post('/event', (req, res) => {
   console.log('Data:', req.body);
-  fs.exists('intermodule-data/history.json', (exists) => {
-    if (!exists) {
-      fs.writeFile('intermodule-data/history.json', '[]', (err) => {
-        if (err) {
-          console.error(err);
-          res.sendStatus(500);
-          return;
-        }
-      });
-    }
-    fs.readFile('intermodule-data/history.json', (err, data) => {
-      let history;
-      if (err) {
+  fs.readFile('intermodule-data/history.json', (err, data) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        fs.writeFile('intermodule-data/history.json', '[]', (err) => {
+          if (err) {
+            console.error(err);
+            res.sendStatus(500);
+            return;
+          }
+          data = '[]';
+        });
+      } else {
         console.error(err);
         res.sendStatus(500);
         return;
       }
-      history = JSON.parse(data);
-      history.push(req.body);
-      fs.writeFile('intermodule-data/history.json', JSON.stringify(history, null, 2), err => {
-        if (err) {
-          console.error(err);
-          res.sendStatus(500);
-        } else {
-          res.sendStatus(200);
-        }
-      });
+    }
+    let history = JSON.parse(data);
+    history.push(req.body);
+    fs.writeFile('intermodule-data/history.json', JSON.stringify(history, null, 2), err => {
+      if (err) {
+        console.error(err);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
     });
   });
 });
