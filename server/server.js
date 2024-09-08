@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const app = express();
+const intermoduleDataDir = '../intermodule-data';
+
 app.use(cors({
   origin: `chrome-extension://${extension_ID}`,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -13,6 +15,7 @@ app.options('*', cors());
 
 // Log the headers of each incoming request
 app.use((req, res, next) => {
+  /*
   console.log('Headers:', req.headers);
   console.log('CORS-related headers:', {
     origin: req.headers.origin,
@@ -20,6 +23,7 @@ app.use((req, res, next) => {
     'access-control-request-headers': req.headers['access-control-request-headers'],
     'access-control-allow-origin': req.headers['access-control-allow-origin']
   });
+  */
   next();
 });
 
@@ -40,14 +44,13 @@ app.post('/visitedUrls', (req, res) => {
 
 app.post('/event', (req, res) => {
   console.log('Data:', req.body);
-  const dir = 'intermodule-data';
-  if (!fs.existsSync(dir)){
-      fs.mkdirSync(dir);
+  if (!fs.existsSync(intermoduleDataDir)){
+      fs.mkdirSync(intermoduleDataDir);
   }
-  fs.readFile(`${dir}/history.json`, (err, data) => {
+  fs.readFile(`${intermoduleDataDir}/history.json`, (err, data) => {
     if (err) {
       if (err.code === 'ENOENT') {
-        fs.writeFileSync('intermodule-data/history.json', '[]');
+        fs.writeFileSync('intermoduleDataDir/history.json', '[]');
         data = '[]';
       } else {
         console.error(err);
@@ -64,7 +67,7 @@ app.post('/event', (req, res) => {
       return;
     }
     history.push(req.body);
-    fs.writeFile('intermodule-data/history.json', JSON.stringify(history, null, 2), err => {
+    fs.writeFile('intermoduleDataDir/history.json', JSON.stringify(history, null, 2), err => {
       if (err) {
         console.error(err);
         res.sendStatus(500);
