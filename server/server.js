@@ -50,7 +50,7 @@ app.post('/event', (req, res) => {
   fs.readFile(`${intermoduleDataDir}/history.json`, (err, data) => {
     if (err) {
       if (err.code === 'ENOENT') {
-        fs.writeFileSync('intermoduleDataDir/history.json', '[]');
+        fs.writeFileSync(`${intermoduleDataDir}/history.json`, '[]');
         data = '[]';
       } else {
         console.error(err);
@@ -67,7 +67,7 @@ app.post('/event', (req, res) => {
       return;
     }
     history.push(req.body);
-    fs.writeFile('intermoduleDataDir/history.json', JSON.stringify(history, null, 2), err => {
+    fs.writeFile(`${intermoduleDataDir}/history.json`, JSON.stringify(history, null, 2), err => {
       if (err) {
         console.error(err);
         res.sendStatus(500);
