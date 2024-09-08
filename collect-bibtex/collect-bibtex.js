@@ -1,3 +1,4 @@
+const intermoduleDataDir = '../intermodule-data';
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -19,8 +20,8 @@ function processBibtexEntry(entry) {
 }
 
 // Define the path of the input and output files
-const historyPath = path.join(__dirname, '../server/history.json');
-const outputPath = path.join(__dirname, '../intermodule-data/history.bib');
+const historyPath = path.join(__dirname, `${intermoduleDataDir}/history.json`);
+const outputPath = path.join(__dirname, `${intermoduleDataDir}/history.bib`);
 
 // Read and parse the history file
 const history = JSON.parse(fs.readFileSync(historyPath, 'utf-8'));

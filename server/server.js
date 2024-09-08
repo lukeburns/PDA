@@ -1,9 +1,9 @@
 const extension_ID='hidffbikffohmhaknmmcldfeojmoobdn';
+const intermoduleDataDir = '../intermodule-data';
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const app = express();
-const intermoduleDataDir = '../intermodule-data';
 
 app.use(cors({
   origin: `chrome-extension://${extension_ID}`,
