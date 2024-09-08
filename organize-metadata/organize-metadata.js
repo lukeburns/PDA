@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 function convertTxtToJson() {
-  const txtPath = path.join(__dirname, '../collect-bibtex/history_pdf.txt');
+  const txtPath = path.join(__dirname, '../collect-bibtex/history.bib');
   const jsonPath = path.join(__dirname, 'metadata.json');
 
   const txtContent = fs.readFileSync(txtPath, 'utf-8');
