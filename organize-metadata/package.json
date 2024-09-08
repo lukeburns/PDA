@@ -1,9 +1,4 @@
 {
-  "dependencies": {
-    "bibtex-parse-js": "^0.0.24"
-  }
-}
-{
   "name": "organize-metadata",
   "version": "1.0.0",
   "description": "",
