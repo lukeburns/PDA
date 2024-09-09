@@ -1,4 +1,4 @@
-# README
+# P-AI-A - a personal AI assistant
 
 WARNING: Proof of concept only, not meant to actually do anything useful at this stage.
 
