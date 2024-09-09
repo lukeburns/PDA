@@ -14,4 +14,3 @@ exports.convertBibToJson = function convertBibToJson() {
   fs.writeFileSync(jsonPath, jsonContent);
 }
 
-convertBibToJson();
