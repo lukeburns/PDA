@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const bibtexParse = require('bibtex-parse-js'); // provides .toJSON method and .toBibtex method
 
-function convertBibToJson() {
+exports.convertBibToJson = function convertBibToJson() {
   const bibPath = path.join(__dirname, `${intermoduleDataDir}/history.bib`);
   const jsonPath = path.join(__dirname, `${intermoduleDataDir}/metadata.json`);
 

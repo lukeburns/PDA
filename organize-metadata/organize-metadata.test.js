@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { convertBibToJson } = require('./organize-metadata');
+const { convertBibToJson } = require('./organize-metadata.js');
 
 test('convertBibToJson function is defined', () => {
   expect(typeof convertBibToJson).toEqual('function');
