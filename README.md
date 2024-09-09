@@ -4,13 +4,7 @@ WARNING: Proof of concept only, not meant to actually do anything useful at this
 
 Idea: Log internet usage locally to allow for data analysis and "attention mining".
 
-## Running the server
-
-```
-cd server
-npm install
-npm start
-```
+Current Data Flow: `history.json` -> `history.bib` -> `metadata.json`
 
 ## Installation of the extension
 
@@ -21,6 +15,29 @@ npm start
 
 You should now see your extension in the list, and a new icon in your menu bar. You can view the console by clicking on the link "Inspect views" under your extension in chrome://extensions.
 
-## Usage
+## Running the server
 
-The URLs visited in the browser should now be automatically sent to the server which puts them in the file `server/visitedUrls.txt`.
+copy the ID of your extension in the first line of `server/server.js`
+
+```
+cd server
+npm install
+npm start
+```
+
+The server logs the activity of the browser in `intermodule-data/history.json`.
+
+## Collecting Bibtex Entries
+
+If you have urls linking to pdf files on Arxiv, then you can save them in a file `intermodule-data/history.bib` as follows.
+
+```
+cd collect-bibtex
+npm install
+node collect-bibtex.js
+```
+
+## Organizing Metadata
+
+Collect metadata and store it in a file `intermodule-data/metadata.json`.
+
