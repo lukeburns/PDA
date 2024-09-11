@@ -10,6 +10,7 @@ exports.convertBibToJson = function convertBibToJson() {
   const bibContent = fs.readFileSync(bibPath, 'utf-8');
   const parsed = bibtexParse.toJSON(bibContent);
 
+  console.log("Parsed BibTeX data: ", parsed);
   const jsonContent = JSON.stringify(parsed, null, 2);
   fs.writeFileSync(jsonPath, jsonContent);
 }
