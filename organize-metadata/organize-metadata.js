@@ -8,6 +8,7 @@ exports.convertBibToJson = function convertBibToJson() {
   const jsonPath = path.join(__dirname, `${intermoduleDataDir}/metadata.json`);
 
   const bibContent = fs.readFileSync(bibPath, 'utf-8');
+  console.log("BibTeX content: ", bibContent);
   const parsed = bibtexParse.toJSON(bibContent);
 
   console.log("Parsed BibTeX data: ", parsed);
