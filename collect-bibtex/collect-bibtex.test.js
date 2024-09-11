@@ -1,4 +1,5 @@
-jest.mock('fs');
+const fs = jest.createMockFromModule('fs');
+fs.readFileSync = jest.fn().mockReturnValue('{"dummy": "dummy"}');
 const { processBibtexEntry } = require('./collect-bibtex.js');
 
 test('processBibtexEntry function is defined', () => {
