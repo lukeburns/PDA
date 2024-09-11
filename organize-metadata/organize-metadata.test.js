@@ -10,7 +10,7 @@ test('convertBibToJson function is defined', () => {
 test('convertBibToJson creates metadata.json file', () => {
   console.log('Running test: convertBibToJson creates metadata.json file');
   fs.writeFileSync = jest.fn();
-  fs.readFileSync = jest.fn().mockReturnValueOnce('@article{dummy,\n  title={dummy title}\n}')
+  fs.readFileSync = jest.fn().mockReturnValueOnce('@article{expectedDummy,\n  title={expected dummy title}\n}')
   convertBibToJson();
   expect(fs.writeFileSync).toHaveBeenCalled();
 });
