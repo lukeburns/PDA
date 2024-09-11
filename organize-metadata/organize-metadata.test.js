@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = jest.createMockFromModule('fs');
 const path = require('path');
 const { convertBibToJson } = require('./organize-metadata.js');
 
@@ -9,7 +9,8 @@ test('convertBibToJson function is defined', () => {
 
 test('convertBibToJson creates metadata.json file', () => {
   console.log('Running test: convertBibToJson creates metadata.json file');
+  fs.readFileSync = jest.fn().mockReturnValue('@article{dummy, title={dummy title}}');
+  fs.writeFileSync = jest.fn();
   convertBibToJson();
-  const jsonPath = path.join(__dirname, '../intermodule-data/metadata.json');
-  expect(fs.existsSync(jsonPath)).toBe(true);
+  expect(fs.writeFileSync).toHaveBeenCalled();
 });

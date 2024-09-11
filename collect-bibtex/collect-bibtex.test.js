@@ -1,3 +1,4 @@
+jest.mock('fs');
 const { processBibtexEntry } = require('./collect-bibtex.js');
 
 test('processBibtexEntry function is defined', () => {
@@ -7,6 +8,7 @@ test('processBibtexEntry function is defined', () => {
 
 test('processBibtexEntry processes a bibtex entry', () => {
   console.log('Running test: processBibtexEntry processes a bibtex entry');
-  // TODO: Replace this with a real test
-  expect(processBibtexEntry('dummy entry')).toEqual('dummy entry');
+  const dummyEntry = '@article{dummy, title={dummy title}}';
+  const processedEntry = processBibtexEntry(dummyEntry);
+  expect(processedEntry).toContain('@article{dummy');
 });
