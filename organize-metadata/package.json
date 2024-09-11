@@ -14,5 +14,8 @@
     "bibtex-parse-js": "^0.0.24",
     "fs": "0.0.1-security",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
