@@ -5,7 +5,7 @@ const axios = require('axios');
 const unidecode = require('unidecode');
 
 // Function to process a BibTeX entry and replace non-ASCII characters in the key with similar ASCII characters
-function processBibtexEntry(entry) {
+exports.processBibtexEntry = function processBibtexEntry(entry) {
   const lines = entry.split('\n');
   const processedLines = lines.map(line => {
     if (line.startsWith('@')) {
