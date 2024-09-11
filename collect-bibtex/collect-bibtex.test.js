@@ -5,6 +5,7 @@ test('processBibtexEntry function is defined', () => {
 });
 
 test('processBibtexEntry processes a bibtex entry', () => {
+  console.log('Running test: processBibtexEntry processes a bibtex entry');
   // TODO: Replace this with a real test
   expect(processBibtexEntry('dummy entry')).toEqual('dummy entry');
 });
