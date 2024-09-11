@@ -1,6 +1,7 @@
 const { processBibtexEntry } = require('./collect-bibtex.js');
 
 test('processBibtexEntry function is defined', () => {
+  console.log('Running test: processBibtexEntry function is defined');
   expect(typeof processBibtexEntry).toEqual('function');
 });
 
