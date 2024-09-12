@@ -22,9 +22,8 @@ test('convertBibToJson creates metadata.json file', () => {
     }
     return '';
   });
-  const intermoduleDataDir = 'data';
-  const bibPath = path.join(__dirname, `${intermoduleDataDir}/history.bib`);
-  const jsonPath = path.join(__dirname, `${intermoduleDataDir}/metadata.json`);
+  const bibPath = path.join(__dirname, 'data/history.bib');
+  const jsonPath = path.join(__dirname, 'data/metadata.json');
   convertBibToJson(bibPath, jsonPath);
   expect(fs.writeFileSync).toHaveBeenCalled();
 });
