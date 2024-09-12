@@ -22,9 +22,9 @@ test('convertBibToJson creates metadata.json file', () => {
     }
     return '';
   });
-  var mockValue = fs.readFileSync();
-  console.log("Mock value: ", mockValue);
-  convertBibToJson();
+  const bibPath = path.join(__dirname, `${intermoduleDataDir}/history.bib`);
+  const jsonPath = path.join(__dirname, `${intermoduleDataDir}/metadata.json`);
+  convertBibToJson(bibPath, jsonPath);
   expect(fs.writeFileSync).toHaveBeenCalled();
 });
 
