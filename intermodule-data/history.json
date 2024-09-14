@@ -1,0 +1,52 @@
+[
+  {
+    "event": "windowFocusChanged",
+    "id": 2107285336,
+    "url": "https://arxiv.org/pdf/1210.1433",
+    "title": "arxiv.org/pdf/1210.1433",
+    "windowId": 2107285335,
+    "groupId": -1,
+    "lastAccessed": 1726351107128.599,
+    "timestamp": 1726351253548
+  },
+  {
+    "event": "tabActivated",
+    "id": 2107285340,
+    "url": "https://arxiv.org/pdf/1611.04231",
+    "title": "arxiv.org/pdf/1611.04231",
+    "windowId": 2107285335,
+    "groupId": -1,
+    "lastAccessed": 1726351301682.785,
+    "timestamp": 1726351301710
+  },
+  {
+    "event": "tabActivated",
+    "id": 2107285336,
+    "url": "https://arxiv.org/pdf/1210.1433",
+    "title": "arxiv.org/pdf/1210.1433",
+    "windowId": 2107285335,
+    "groupId": -1,
+    "lastAccessed": 1726351314170.75,
+    "timestamp": 1726351314189
+  },
+  {
+    "event": "windowFocusChanged",
+    "id": 2107285336,
+    "url": "https://arxiv.org/pdf/1210.1433",
+    "title": "arxiv.org/pdf/1210.1433",
+    "windowId": 2107285335,
+    "groupId": -1,
+    "lastAccessed": 1726351314332.786,
+    "timestamp": 1726351512155
+  },
+  {
+    "event": "windowFocusChanged",
+    "id": 2107285336,
+    "url": "https://arxiv.org/pdf/1210.1433",
+    "title": "arxiv.org/pdf/1210.1433",
+    "windowId": 2107285335,
+    "groupId": -1,
+    "lastAccessed": 1726351314332.786,
+    "timestamp": 1726351546568
+  }
+]

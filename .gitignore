@@ -3,5 +3,8 @@
 node_modules
 *.txt
 history.*
+!history.bib
+!history.json
 metadata.*
+!metadata.json
 local
