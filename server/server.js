@@ -62,9 +62,8 @@ app.post('/event', (req, res) => {
     try {
       history = JSON.parse(data);
     } catch (e) {
-      console.error(e);
-      res.sendStatus(500);
-      return;
+      console.error('Error parsing JSON:', e);
+      history = [];
     }
     history.push(req.body);
     fs.writeFile(`${intermoduleDataDir}/history.json`, JSON.stringify(history, null, 2), err => {
