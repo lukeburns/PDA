@@ -63,6 +63,7 @@ app.post('/event', (req, res) => {
       history = JSON.parse(data);
     } catch (e) {
       console.error('Error parsing JSON:', e);
+      console.error('Problematic JSON data:', data);
       history = [];
     }
     if (req.body.event === 'highlight') {
