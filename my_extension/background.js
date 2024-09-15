@@ -52,6 +52,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(highlightEvent)
+      }).then(response => {
+        if (!response.ok) {
+          console.error('Failed to send highlight event to server:', response.statusText);
+        } else {
+          console.log('Highlight event sent to server successfully.');
+        }
+      }).catch(error => {
+        console.error('Error sending highlight event to server:', error);
       });
     });
   }
