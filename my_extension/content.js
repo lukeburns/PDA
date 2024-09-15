@@ -1,7 +1,9 @@
 document.addEventListener('mouseup', () => {
+  console.log('Mouseup event detected.');
   const selectedText = window.getSelection().toString().trim();
   console.log('Mouseup event detected. Selected text:', selectedText);
   if (selectedText) {
+    console.log('Selected text:', selectedText);
     console.log('Sending highlight message:', selectedText);
     chrome.runtime.sendMessage({ type: 'highlight', text: selectedText }, (response) => {
       if (chrome.runtime.lastError) {

@@ -32,7 +32,9 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 })
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  console.log('Message received:', message);
   if (message.type === 'highlight' || message.type === 'copy') {
+    console.log('Highlight or copy message received.');
     const event = {
       event: message.type,
       text: message.text,

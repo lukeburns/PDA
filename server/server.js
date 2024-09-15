@@ -49,7 +49,7 @@ app.post('/visitedUrls', (req, res) => {
 });
 
 app.post('/event', (req, res) => {
-  console.log('Data:', req.body);
+  console.log('Event received:', req.body);
   if (!fs.existsSync(intermoduleDataDir)){
       fs.mkdirSync(intermoduleDataDir);
   }
