@@ -31,7 +31,32 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   }
 })
 
-function updateHistory (tab, event) {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === 'highlight') {
+    const highlightEvent = {
+      event: 'highlight',
+      text: message.text,
+      timestamp: Date.now()
+    };
+    chrome.storage.sync.get(['history'], function(result) {
+      const history = result.history ? result.history : [];
+      history.push(highlightEvent);
+      chrome.storage.sync.set({ history }, function() {
+        console.log('Highlighted text added to history.');
+        console.log('History:', history);
+      });
+      fetch('http://localhost:3000/event', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(highlightEvent)
+      });
+    });
+  }
+});
+
+function updateHistory(tab, event) {
   chrome.storage.sync.get(['history'], function(result) {
     const history = result.history ? result.history : []
     const prev = history[history.length-1]
