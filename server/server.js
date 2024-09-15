@@ -65,6 +65,9 @@ app.post('/event', (req, res) => {
       console.error('Error parsing JSON:', e);
       history = [];
     }
+    if (req.body.event === 'highlight') {
+      console.log('Highlight event received:', req.body);
+    }
     history.push(req.body);
     fs.writeFile(`${intermoduleDataDir}/history.json`, JSON.stringify(history, null, 2), err => {
       if (err) {
