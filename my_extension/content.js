@@ -12,3 +12,18 @@ document.addEventListener('mouseup', () => {
     });
   }
 });
+
+document.addEventListener('copy', () => {
+  const selectedText = window.getSelection().toString().trim();
+  console.log('Copy event detected. Selected text:', selectedText);
+  if (selectedText) {
+    console.log('Sending copy message:', selectedText);
+    chrome.runtime.sendMessage({ type: 'copy', text: selectedText }, (response) => {
+      if (chrome.runtime.lastError) {
+        console.error('Error sending message:', chrome.runtime.lastError);
+      } else {
+        console.log('Message sent successfully:', response);
+      }
+    });
+  }
+});

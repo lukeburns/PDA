@@ -66,8 +66,8 @@ app.post('/event', (req, res) => {
       console.error('Problematic JSON data:', data);
       history = [];
     }
-    if (req.body.event === 'highlight') {
-      console.log('Highlight event received:', req.body);
+    if (req.body.event === 'highlight' || req.body.event === 'copy') {
+      console.log(`${req.body.event.charAt(0).toUpperCase() + req.body.event.slice(1)} event received:`, req.body);
     }
     history.push(req.body);
     fs.writeFile(`${intermoduleDataDir}/history.json`, JSON.stringify(history, null, 2), err => {

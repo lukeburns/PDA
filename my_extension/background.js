@@ -32,18 +32,18 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 })
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.type === 'highlight') {
-    const highlightEvent = {
-      event: 'highlight',
+  if (message.type === 'highlight' || message.type === 'copy') {
+    const event = {
+      event: message.type,
       text: message.text,
       timestamp: Date.now()
     };
-    console.log('Highlight message received:', message.text, 'from', sender);
+    console.log(`${message.type.charAt(0).toUpperCase() + message.type.slice(1)} message received:`, message.text, 'from', sender);
     chrome.storage.sync.get(['history'], function(result) {
       const history = result.history ? result.history : [];
-      history.push(highlightEvent);
+      history.push(event);
       chrome.storage.sync.set({ history }, function() {
-        console.log('Highlighted text added to history.');
+        console.log(`${message.type.charAt(0).toUpperCase() + message.type.slice(1)} text added to history.`);
         console.log('History:', history);
       });
       fetch('http://localhost:3000/event', {
@@ -51,15 +51,15 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(highlightEvent)
+        body: JSON.stringify(event)
       }).then(response => {
         if (!response.ok) {
-          console.error('Failed to send highlight event to server:', response.statusText);
+          console.error(`Failed to send ${message.type} event to server:`, response.statusText);
         } else {
-          console.log('Highlight event sent to server successfully.');
+          console.log(`${message.type.charAt(0).toUpperCase() + message.type.slice(1)} event sent to server successfully.`);
         }
       }).catch(error => {
-        console.error('Error sending highlight event to server:', error);
+        console.error(`Error sending ${message.type} event to server:`, error);
       });
     });
   }
