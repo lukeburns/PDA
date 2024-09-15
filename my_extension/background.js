@@ -38,6 +38,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       text: message.text,
       timestamp: Date.now()
     };
+    console.log('Highlight message received:', message.text);
     chrome.storage.sync.get(['history'], function(result) {
       const history = result.history ? result.history : [];
       history.push(highlightEvent);
