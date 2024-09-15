@@ -29,6 +29,12 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  const dataSize = JSON.stringify(req.body).length;
+  console.log(`Received request with data size: ${dataSize} bytes`);
+  next();
+});
+
 app.post('/visitedUrls', (req, res) => {
   console.log('Received visited URLs: ', req.body.visitedUrls);
   console.log('Data:', req.body);
