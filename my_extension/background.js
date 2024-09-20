@@ -31,6 +31,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   }
 })
 
+// Track when the user highlights text
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   console.log('Message received:', message);
   if (message.type === 'highlight' || message.type === 'copy') {
